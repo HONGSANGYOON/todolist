@@ -11,6 +11,7 @@ function App() {
   const inputTextHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputContent(e.target.value);
   };
+
   //확인하기 버튼 작용시, 오늘할일로 내려갑니다.
   const onClickHandler = () => {
     if (inputContent === "") {
@@ -34,6 +35,10 @@ function App() {
   };
 
   const onClickSuccessHandler = (content: string) => {
+    const updateList = contentList.filter(
+      (updateListContent: string) => updateListContent !== content
+    );
+    setContentList(updateList);
     setSuccessList([...successList, content]);
   };
 
@@ -106,11 +111,3 @@ const ContentContainer = styled.div`
   height: 10vh;
 `;
 export default App;
-
-const A = (b: string) => {
-  //변수명
-  console.log(b);
-};
-A("aa");
-const a = "@@@";
-A(a);
