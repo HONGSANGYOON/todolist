@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import "./App.css";
 import InputTag from "./components/InputTag";
+import Working from "./components/Working";
 
 function App() {
   const [inputContent, setInputContent] = useState<string>("");
@@ -20,14 +21,6 @@ function App() {
     setList(updatedSuccessList);
   };
 
-  const onClickSuccessHandler = (content: string) => {
-    const updateList = contentList.filter(
-      (updateListContent: string) => updateListContent !== content
-    );
-    setContentList(updateList);
-    setSuccessList([...successList, content]);
-  };
-
   return (
     <>
       <div>
@@ -40,27 +33,12 @@ function App() {
       </div>
 
       <div>
-        <h2>오늘 할일</h2>
-        {/* input태그에서 갖고온 사항들 리스트로 처리 */}
-        {contentList.map((content, index) => (
-          <ContentContainer key={index}>
-            <div>{content}</div>
-            <button
-              onClick={() => {
-                deleteButtonHandler(contentList, content, setContentList);
-              }}
-            >
-              삭제하기
-            </button>
-            <button
-              onClick={() => {
-                onClickSuccessHandler(content);
-              }}
-            >
-              완료하기
-            </button>
-          </ContentContainer>
-        ))}
+        <Working
+          contentList={contentList}
+          setContentList={setContentList}
+          successList={successList}
+          setSuccessList={setSuccessList}
+        />
       </div>
       <div>
         <h2>마무리한 일</h2>
