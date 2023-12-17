@@ -1,26 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import "./App.css";
+import InputTag from "./components/InputTag";
 
 function App() {
   const [inputContent, setInputContent] = useState<string>("");
   const [contentList, setContentList] = useState<string[]>([]);
   const [successList, setSuccessList] = useState<string[]>([]);
-
-  //input안 내용 적용
-  const inputTextHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputContent(e.target.value);
-  };
-
-  //확인하기 버튼 작용시, 오늘할일로 내려갑니다.
-  const onClickHandler = () => {
-    if (inputContent === "") {
-      alert("내용을 적어주세요");
-    } else {
-      setContentList([...contentList, inputContent]);
-      setInputContent("");
-    }
-  };
 
   //삭제하기버튼
   const deleteButtonHandler = (
@@ -45,14 +31,12 @@ function App() {
   return (
     <>
       <div>
-        <input onChange={inputTextHandler} value={inputContent}></input>
-        <InputBtn
-          onClick={() => {
-            onClickHandler();
-          }}
-        >
-          확인하기
-        </InputBtn>
+        <InputTag
+          inputContent={inputContent}
+          setInputContent={setInputContent}
+          contentList={contentList}
+          setContentList={setContentList}
+        />
       </div>
 
       <div>
