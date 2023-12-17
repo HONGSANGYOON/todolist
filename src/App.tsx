@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import "./App.css";
 
@@ -11,9 +11,14 @@ function App() {
   };
 
   const onClickHandler = () => {
-    setContentList([...contentList, inputContent]);
-    setInputContent("");
+    if (inputContent === "") {
+      alert("내용을 적어주세요");
+    } else {
+      setContentList([...contentList, inputContent]);
+      setInputContent("");
+    }
   };
+
   return (
     <>
       <div>
