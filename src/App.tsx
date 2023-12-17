@@ -22,6 +22,13 @@ function App() {
   };
   //완료하기 버튼을 작용시, 마무리한일로 내려갑니다.
 
+  const delteSuccessListBtn = (successContent: string) => {
+    const updatedSuccessList = successList.filter(
+      (content) => content !== successContent
+    );
+    setSuccessList(updatedSuccessList);
+  };
+
   const onClickSuccessHandler = (content: string) => {
     setSuccessList([...successList, content]);
   };
@@ -58,11 +65,17 @@ function App() {
       </div>
       <div>
         <h2>마무리한 일</h2>
-        {successList.map((successcontent) => (
-          <div>
+        {successList.map((successcontent, index) => (
+          <ContentContainer key={index}>
             <div>{successcontent}</div>
-            <button>삭제하기</button>
-          </div>
+            <button
+              onClick={() => {
+                delteSuccessListBtn(successcontent);
+              }}
+            >
+              삭제하기
+            </button>
+          </ContentContainer>
         ))}
       </div>
       {/* 마무리한일 부분 */}
@@ -80,3 +93,11 @@ const ContentContainer = styled.div`
   height: 10vh;
 `;
 export default App;
+
+const A = (b: string) => {
+  //변수명
+  console.log(b);
+};
+A("aa");
+const a = "@@@";
+A(a);
