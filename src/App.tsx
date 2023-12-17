@@ -20,13 +20,17 @@ function App() {
       setInputContent("");
     }
   };
-  //완료하기 버튼을 작용시, 마무리한일로 내려갑니다.
 
-  const delteSuccessListBtn = (successContent: string) => {
-    const updatedSuccessList = successList.filter(
-      (content) => content !== successContent
+  //삭제하기버튼
+  const deleteButtonHandler = (
+    list: string[],
+    originContent: string,
+    setList: React.Dispatch<React.SetStateAction<string[]>>
+  ) => {
+    const updatedSuccessList = list.filter(
+      (content) => content !== originContent
     );
-    setSuccessList(updatedSuccessList);
+    setList(updatedSuccessList);
   };
 
   const onClickSuccessHandler = (content: string) => {
@@ -52,7 +56,13 @@ function App() {
         {contentList.map((content, index) => (
           <ContentContainer key={index}>
             <div>{content}</div>
-            <button>삭제하기</button>
+            <button
+              onClick={() => {
+                deleteButtonHandler(contentList, content, setContentList);
+              }}
+            >
+              삭제하기
+            </button>
             <button
               onClick={() => {
                 onClickSuccessHandler(content);
@@ -70,7 +80,11 @@ function App() {
             <div>{successcontent}</div>
             <button
               onClick={() => {
-                delteSuccessListBtn(successcontent);
+                deleteButtonHandler(
+                  successList,
+                  successcontent,
+                  setSuccessList
+                );
               }}
             >
               삭제하기
@@ -78,7 +92,6 @@ function App() {
           </ContentContainer>
         ))}
       </div>
-      {/* 마무리한일 부분 */}
     </>
   );
 }
