@@ -30,8 +30,12 @@ const InputTag: React.FC<InputTagProps> = ({
 
   return (
     <>
-      <div>
-        <input onChange={inputTextHandler} value={inputContent}></input>
+      <Container>
+        <input
+          placeholder="내용을 적어주세요"
+          onChange={inputTextHandler}
+          value={inputContent}
+        ></input>
         <InputBtn
           onClick={() => {
             onClickHandler();
@@ -39,7 +43,7 @@ const InputTag: React.FC<InputTagProps> = ({
         >
           확인하기
         </InputBtn>
-      </div>
+      </Container>
     </>
   );
 };
@@ -49,4 +53,16 @@ export default InputTag;
 const InputBtn = styled.button`
   width: 5vw;
   height: 2.5vh;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 300px;
+  margin-top: 20px;
 `;

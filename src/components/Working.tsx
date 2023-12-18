@@ -40,20 +40,23 @@ const Working: React.FC<WorkingProps> = ({
       {contentList.map((content, index) => (
         <ContentContainer key={index}>
           <div>{content}</div>
-          <button
-            onClick={() => {
-              deleteButtonHandler(contentList, content, setContentList);
-            }}
-          >
-            삭제하기
-          </button>
-          <button
-            onClick={() => {
-              onClickSuccessHandler(content);
-            }}
-          >
-            완료하기
-          </button>
+
+          <ButtonContainer>
+            <Btn
+              onClick={() => {
+                deleteButtonHandler(contentList, content, setContentList);
+              }}
+            >
+              삭제하기
+            </Btn>
+            <Btn
+              onClick={() => {
+                onClickSuccessHandler(content);
+              }}
+            >
+              완료하기
+            </Btn>
+          </ButtonContainer>
         </ContentContainer>
       ))}
     </div>
@@ -63,6 +66,25 @@ const Working: React.FC<WorkingProps> = ({
 export default Working;
 
 const ContentContainer = styled.div`
-  width: 10vw;
-  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 300px;
+  margin-top: 20px;
+`;
+
+const Btn = styled.button`
+  width: 5vw;
+  height: 2.5vh;
+
+  margin-top: 10px;
+`;
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
 `;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import "./App.css";
 import InputTag from "./components/InputTag";
@@ -12,23 +12,33 @@ function App() {
 
   return (
     <>
-      <InputTag
-        inputContent={inputContent}
-        setInputContent={setInputContent}
-        contentList={contentList}
-        setContentList={setContentList}
-      />
+      <Todolist>
+        <h1>TODO LIST</h1>
+        <InputTag
+          inputContent={inputContent}
+          setInputContent={setInputContent}
+          contentList={contentList}
+          setContentList={setContentList}
+        />
 
-      <Working
-        contentList={contentList}
-        setContentList={setContentList}
-        successList={successList}
-        setSuccessList={setSuccessList}
-      />
+        <Working
+          contentList={contentList}
+          setContentList={setContentList}
+          successList={successList}
+          setSuccessList={setSuccessList}
+        />
 
-      <Done successList={successList} setSuccessList={setSuccessList} />
+        <Done successList={successList} setSuccessList={setSuccessList} />
+      </Todolist>
     </>
   );
 }
 
 export default App;
+
+const Todolist = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;

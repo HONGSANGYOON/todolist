@@ -23,13 +23,19 @@ const Done: React.FC<DoneProps> = ({ successList, setSuccessList }) => {
       {successList.map((successcontent, index) => (
         <ContentContainer key={index}>
           <div>{successcontent}</div>
-          <button
-            onClick={() => {
-              deleteButtonHandler(successList, successcontent, setSuccessList);
-            }}
-          >
-            삭제하기
-          </button>
+          <ButtonContainer>
+            <Btn
+              onClick={() => {
+                deleteButtonHandler(
+                  successList,
+                  successcontent,
+                  setSuccessList
+                );
+              }}
+            >
+              삭제하기
+            </Btn>
+          </ButtonContainer>
         </ContentContainer>
       ))}
     </div>
@@ -39,6 +45,25 @@ const Done: React.FC<DoneProps> = ({ successList, setSuccessList }) => {
 export default Done;
 
 const ContentContainer = styled.div`
-  width: 10vw;
-  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 300px;
+  margin-top: 20px;
+`;
+
+const Btn = styled.button`
+  width: 5vw;
+  height: 2.5vh;
+
+  margin-top: 10px;
+`;
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
 `;
