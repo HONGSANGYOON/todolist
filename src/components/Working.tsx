@@ -4,12 +4,14 @@ import styled from "styled-components";
 interface WorkingProps {
   contentList: string[];
   setContentList: React.Dispatch<React.SetStateAction<string[]>>;
+
   successList: string[];
   setSuccessList: React.Dispatch<React.SetStateAction<string[]>>;
 }
 const Working: React.FC<WorkingProps> = ({
   contentList,
   setContentList,
+
   successList,
   setSuccessList,
 }) => {
